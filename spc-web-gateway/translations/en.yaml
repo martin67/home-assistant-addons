@@ -1,0 +1,7 @@
+configuration:
+  message:
+    name: Message
+    description: The message that will be printed to the log when starting this example add-on.
+  edp_panel_id:
+    name: EDP Panel ID
+    description: Unique identification number used by EDP receiver for this panel.
