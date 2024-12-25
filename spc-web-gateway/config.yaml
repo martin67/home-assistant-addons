@@ -9,18 +9,25 @@ arch:
   - armv7
   - aarch64
   - amd64
-  - i386
 init: false
 map:
   - share:rw
+webui: http://[HOST]:[PORT:8088]
+ports:
+  16000/tcp: 16000
+  8088/tcp: 8088
+  8089/tcp: 8089
+ports_description:
+  16000/tcp: "EDP receiver port"
+  8088/tcp: "Port to listen on for web client connections."
+  8089/tcp: "Port to listen on for local web clients connected to 127.0.0.1."
 options:
   edp_panel_id: 1000
   receiver_id: 1000
-  receiver_port: 16000
-  encryption_key: null
+  encryption_key: "00112233445566778899AABBCCDDEEFF"
 schema:
   edp_panel_id: int(1,999997)
   receiver_id: int(1,999997)
-  receiver_port: port
+  #  receiver_port: port
   encryption_key: str
 #image: "ghcr.io/home-assistant/{arch}-addon-example"
