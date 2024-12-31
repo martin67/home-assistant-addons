@@ -1,7 +1,24 @@
 configuration:
-  message:
-    name: Message
-    description: The message that will be printed to the log when starting this example add-on.
-  edp_panel_id:
-    name: EDP Panel ID
-    description: Unique identification number used by EDP receiver for this panel.
+  spc_id:
+    name: SPC EDP Panel ID
+    description: A number which will be used by the SPC Web Gateway to
+      identify the SPC panel. Must match value in SPC EDP communications
+      settings.
+  gateway_id:
+    name: SPC Gateway ID
+    description: A number which will be used by the SPC panel to
+      identify the SPC Web Gateway as a EDP receiver. Must match value in
+      SPC EDP Receiver settings.
+  enable_get_auth:
+    name: Enable GET authentication
+    description:
+      Set this flag to yes to enable user and password control for GET
+      requests (queries). Digest authentication is used.
+  enable_put_auth:
+    name: Enable PUT authentication
+    description:
+      Set this flag to yes to enable user and password control for PUT
+      requests (commands). Digest authentication is used.
+  enable_ws_auth:
+    name: Enable Websocket authentication
+    description: Set this flag to yes to enable user and password control for Websocket access.

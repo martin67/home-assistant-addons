@@ -1,19 +1,69 @@
-#!/usr/bin/with-contenv bashio
+#!/bin/bash
 # ==============================================================================
-# Start the example service
+# Start the SPC Web Gateway service
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-# Add your code here
+# bashio does not work on Ubuntu 18 - I guess it needs a bash version 5 (ver 4 for Ubuntu 18)
+echo "start"
 
-# Declare variables
-declare message
+## Copy settings to config.xml
+options=/data/options.json
+config=/opt/spc-web-gateway/config.xml
 
-## Get the 'message' key from the user config options.
-message=$(bashio::config 'message')
+xmlstarlet edit --inplace \
+  --update "//config//enable_get_auth" --value "no" \
+  --update "//config//enable_put_auth" --value "no" \
+  --update "//config//enable_ws_auth" --value "no" \
+  --update "//config//enable_ssl_encryption" --value "no" \
+  --update "//config//spc_id" --value $(jq '.spc_id' $options) \
+  --update "//config//gateway_id" --value $(jq '.gateway_id' $options) \
+  --update "//config//access_control_list" --value "" \
+  $config
 
-## Print the message the user supplied, defaults to "Hello World..."
-bashio::log.info "${message:="Hello World..."}"
+get_user=$(jq '.get_user' $options)
+put_user=$(jq '.put_user' $options)
+ws_user=$(jq '.ws_user' $options)
+get_password=$(jq '.get_password' $options)
+put_password=$(jq '.put_password' $options)
+ws_password=$(jq '.ws_password' $options)
 
-## Run your program
-exec /usr/bin/my_program
+echo $get_user
+
+## Generate auth data
+expect -c "spawn /opt/spc-web-gateway/spc-web-gateway -A
+expect \"Username*\"
+send $get_user
+send \"\r\"
+expect \"New password: \"
+send $get_password
+send \"\r\"
+expect \"Re-type password: \"
+send $get_password
+send \"\r\"
+expect \"Username*\"
+send $put_user
+send \"\r\"
+expect \"New password: \"
+send $put_password
+send \"\r\"
+expect \"Re-type password: \"
+send $put_password
+send \"\r\"
+expect \"Username*\"
+send $ws_user
+send \"\r\"
+expect \"New password: \"
+send $ws_password
+send \"\r\"
+expect \"Re-type password: \"
+send $ws_password
+send \"\r\"
+expect \"EDP encryption key (32 hexadecimal digits): \"
+send $(jq '.encryption_key' $options)
+send \"\r\"
+expect eof"
+
+## Run program
+runuser -u spc -- /opt/spc-web-gateway/spc-web-gateway
+

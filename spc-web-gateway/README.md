@@ -1,15 +1,20 @@
-# SPC Web Gateway
+# Home Assistant Add-On: SPC Web Gateway
 
-_Example add-on to use as a blueprint for new add-ons._
+Runs SPC Web Gateway to connect to a SPC/Vanderbilt alarm system.
 
-![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
-![Supports armhf Architecture][armhf-shield]
-![Supports armv7 Architecture][armv7-shield]
-![Supports i386 Architecture][i386-shield]
 
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+
+## About
+
+This add-on needs the SPC Web Gateway software availble from Lundix IT, see https://www.lundix.se/spc-web-gateway. It is tested with version 1.5 of the Lundix software.
+Use together with the SPC plugin.
+
+## Installation
+
+1. Install add-on as normal. This will fail.
+2. Copy to addons_config
+3. Re-install
+
+## Vanderbilt SPC plugin

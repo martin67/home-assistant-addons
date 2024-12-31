@@ -1,17 +1,13 @@
-# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: SPC Web Gateway add-on
 version: "1.0.0"
 slug: spc-web-gateway
 description: SPC Web Gateway add-on
 url: "https://github.com/martin67/home-assistant-addons/tree/main/spc-web-gateway"
 arch:
-  - armhf
-  - armv7
-  - aarch64
   - amd64
 init: false
 map:
-  - share:rw
+  - addon_config
 webui: http://[HOST]:[PORT:8088]
 ports:
   16000/tcp: 16000
@@ -22,12 +18,32 @@ ports_description:
   8088/tcp: "Port to listen on for web client connections."
   8089/tcp: "Port to listen on for local web clients connected to 127.0.0.1."
 options:
-  edp_panel_id: 1000
-  receiver_id: 1000
+  spc_id: 1000
+  gateway_id: 1000
+  receiver_port: 16000
+  enable_get_auth: false
+  enable_put_auth: false
+  enable_ws_auth: false
+  get_user: "get_user"
+  get_password: "secret"
+  put_user: "put_user"
+  put_password: "secret"
+  ws_user: "ws_user"
+  ws_password: "secret"
   encryption_key: "00112233445566778899AABBCCDDEEFF"
 schema:
-  edp_panel_id: int(1,999997)
-  receiver_id: int(1,999997)
-  #  receiver_port: port
+  spc_id: int(1,999997)
+  gateway_id: int(1,999997)
+  receiver_port: port
+  enable_get_auth: bool
+  enable_put_auth: bool
+  enable_ws_auth: bool
+  get_user: str
+  get_password: str
+  put_user: str
+  put_password: str
+  ws_user: str
+  ws_password: str
   encryption_key: str
-#image: "ghcr.io/home-assistant/{arch}-addon-example"
+
+image: "ghcr.io/home-assistant/{arch}-addon-example"

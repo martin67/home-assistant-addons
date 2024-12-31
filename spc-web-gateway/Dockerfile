@@ -8,12 +8,10 @@ RUN \
     curl -sSLf -o /usr/bin/tempio \
     "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}"
 
-# Copy root filesystem
-COPY rootfs /
+RUN apt-get update && apt-get install -y xmlstarlet expect
 
-RUN \
-  cd /tmp &&\
-  tar -zxf spc-web-gateway-ubuntu_x86_64_18_04.1.5.tar.gz &&\
-  adduser --system spc &&\
-  cd spc-web-gateway-1.5
-  #.\install.sh
+# Copy root filesystem
+COPY rootfs install.sh /
+
+# Install SPC Web Gateway files
+RUN chmod +x /install.sh && /install.sh
