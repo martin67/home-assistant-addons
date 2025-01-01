@@ -12,6 +12,6 @@ When configuring the Vanderbilt SPC integration, use the following values:
 
 ```
 spc:
-  api_url: http://local-spc-web-gateway:8088
-  ws_url: http://local-spc-web-gateway:8088/ws/spc
+  api_url: http://45252770-spc-web-gateway:8088
+  ws_url: http://45252770-spc-web-gateway:8088/ws/spc
 ```
