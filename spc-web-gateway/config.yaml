@@ -6,7 +6,6 @@ url: "https://github.com/martin67/home-assistant-addons/tree/main/spc-web-gatewa
 arch:
   - amd64
 init: false
-apparmor: false
 map:
   - addon_config
 webui: http://[HOST]:[PORT:8088]
@@ -46,5 +45,4 @@ schema:
   ws_user: str
   ws_password: str
   encryption_key: str
-
-image: "ghcr.io/home-assistant/{arch}-addon-example"
+#image: "ghcr.io/home-assistant/{arch}-addon-example"

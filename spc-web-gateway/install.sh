@@ -2,7 +2,7 @@
 
 # Install SPC gateway stuff
 cd /tmp
-
+#exit
 tar -zxf /config/spc-web-gateway-ubuntu_x86_64_18_04.1.5.tar.gz
 
 adduser --system spc
