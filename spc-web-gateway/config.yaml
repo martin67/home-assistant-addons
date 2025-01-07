@@ -1,7 +1,7 @@
-name: SPC Web Gateway add-on
+name: SPC Web Gateway
 version: "1.0.0"
 slug: spc-web-gateway
-description: SPC Web Gateway add-on
+description: Run the SPC Web Gateway from Lundix IT
 url: "https://github.com/martin67/home-assistant-addons/tree/main/spc-web-gateway"
 arch:
   - amd64
@@ -13,11 +13,9 @@ webui: http://[HOST]:[PORT:8088]
 ports:
   16000/tcp: 16000
   8088/tcp: 8088
-  8089/tcp: 8089
 ports_description:
   16000/tcp: "EDP receiver port"
   8088/tcp: "Port to listen on for web client connections."
-  8089/tcp: "Port to listen on for local web clients connected to 127.0.0.1."
 options:
   spc_id: 1000
   gateway_id: 1000

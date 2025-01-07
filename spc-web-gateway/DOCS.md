@@ -25,17 +25,17 @@ Make a note of the unit ID as well so it matches in the add-on.
 
 ### Add-on setup
 
-Currently the Vandrbilt SPC does not support all options in the add-on. So use the following (default) values.
+Currently the Vanderbilt SPC does not support all options in the add-on. So use the following (default) values.
 
 - Enable GET authentication: false
 - Enable PUT authentication: false
 - Enable Websocket authentication: false
 
-The usernames and password are not used at the moment.
+The usernames and passwords are not used at the moment.
 
 ### Plugin setup
 
-When configuring the Vanderbilt SPC integration, use the following values:
+When configuring the Vanderbilt SPC plugin, use the following values:
 
 ```
 spc:
