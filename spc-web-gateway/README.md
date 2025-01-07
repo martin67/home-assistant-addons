@@ -9,12 +9,4 @@ Runs SPC Web Gateway to connect to a SPC/Vanderbilt alarm system.
 ## About
 
 This add-on needs the SPC Web Gateway software availble from Lundix IT, see https://www.lundix.se/spc-web-gateway. It is tested with version 1.5 of the Lundix software.
-Use together with the SPC plugin.
-
-## Installation
-
-1. Install add-on as normal. This will fail.
-2. Copy to addons_config
-3. Re-install
-
-## Vanderbilt SPC plugin
+Use together with the [Vanderbilt SPC](https://www.home-assistant.io/integrations/spc) plugin.

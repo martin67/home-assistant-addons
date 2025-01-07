@@ -11,8 +11,7 @@ RUN \
 RUN apt-get update && apt-get install -y xmlstarlet expect
 
 # Copy root filesystem
-COPY rootfs install.sh /
+COPY rootfs /
 
-# Install SPC Web Gateway files
-#RUN chmod +x /install.sh && /install.sh
+# Add SPC user
 RUN adduser --system spc
